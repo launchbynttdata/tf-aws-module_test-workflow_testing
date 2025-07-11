@@ -1,0 +1,20 @@
+name: Draft Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  draft-release:
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: launchbynttdata/launch-workflows/.github/workflows/reusable-release-draft-on-merge.yml@feature/release-workflows
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
