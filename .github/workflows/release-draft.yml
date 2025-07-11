@@ -10,11 +10,9 @@ permissions:
 
 jobs:
   draft-release:
+    name: "Draft Release on Merge"
     permissions:
       contents: write
       pull-requests: write
-    runs-on: ubuntu-latest
-    steps:
-      - uses: launchbynttdata/launch-workflows/.github/workflows/reusable-release-draft-on-merge.yml@feature/release-workflows
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    uses: launchbynttdata/launch-workflows/.github/workflows/reusable-release-draft-on-merge.yml@feature/release-workflows
+    secrets: inherit # pragma: allowlist secret
